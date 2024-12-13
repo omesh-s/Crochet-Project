@@ -4,76 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crochet Project</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="./styles/tailwind.css" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-yellow-500 min-h-screen flex items-center justify-center">
-        <div class="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
-            <h1 class="text-2xl font-bold mb-4 text-gray-800">Crochet Pattern Converter</h1>
-            
-            <div class="mb-6">
-                <label for="file-upload" class="block text-gray-700 font-bold mb-2">
-                    Upload Crochet Pattern
-                </label>
-                <input
-                    id="file-upload"
-                    type="file"
-                    accept=".txt,.pdf,.crochet"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-            </div>
-
-            <div class="mb-6">
-                <button
-                    id="convert-button"
-                    class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled
-                >
-                    Convert
-                </button>
-                <span id="conversion-status" class="ml-4 text-gray-700"></span>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const fileInput = document.getElementById('file-upload');
-        const convertButton = document.getElementById('convert-button');
-        const conversionStatus = document.getElementById('conversion-status');
-
-        fileInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                convertButton.disabled = false;
-            } else {
-                convertButton.disabled = true;
-            }
-        });
-
-        convertButton.addEventListener('click', async () => {
-            const file = fileInput.files[0];
-            if (!file) {
-                return;
-            }
-
-            conversionStatus.textContent = 'Converting...';
-            convertButton.disabled = true;
-
-            try {
-                // Call your friend's AI model API to convert the file
-                const response = await fetch('/convert', {
-                    method: 'POST',
-                    body: file,
-                });
-                const convertedText = await response.text();
-
-                conversionStatus.textContent = 'Conversion Successful!';
-                // Display the converted text or save it to a file
-            } catch (error) {
-                conversionStatus.textContent = 'Conversion Failed. Please try again.';
-                convertButton.disabled = false;
-            }
-        });
-    </script>
+    <div id="root"></div>
+    <script src="./components/CrochetPatternConverter.js"></script>
 </body>
 </html>
