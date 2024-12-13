@@ -47,7 +47,7 @@ const CrochetPatternConverter = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    
     <div className="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
       <h1 className="text-2xl font-bold mb-4 text-gray-800">Crochet Pattern Converter</h1>
 
@@ -107,7 +107,6 @@ const CrochetPatternConverter = () => {
           </button>
         </div>
       )}
-    </div>
     </div>
   );
 };
